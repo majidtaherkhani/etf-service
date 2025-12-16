@@ -49,3 +49,6 @@ logs/
 .DS_Store
 Thumbs.db
 
+# Firebase credentials
+bmo-etf-firebase*.json
+
