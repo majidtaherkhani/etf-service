@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from configs.db.postgresql import Base
 from src.modules.market_data.models import SecurityPrice
+from src.modules.etf.models import AnalysisLog
 from dotenv import load_dotenv
 
 load_dotenv()

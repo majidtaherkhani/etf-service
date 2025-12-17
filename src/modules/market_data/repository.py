@@ -43,7 +43,6 @@ class MarketDataRepository:
             ).all()
 
     
-    # insert and update price
     def bulk_save_prices(self, prices: List[SecurityPrice]):
         try:
             self.db.bulk_save_objects(prices)

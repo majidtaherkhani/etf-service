@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   api:
     build: .
@@ -7,7 +5,11 @@ services:
       - "${PORT:-8000}:8000"
     env_file:
       - .env
+    environment:
+      - FIREBASE_CREDENTIALS_PATH=/app/bmo-etf-firebase-adminsdk-fbsvc-d7943182ab.json
     volumes:
       - ./src:/app/src
+      - ./bmo-etf-firebase-adminsdk-fbsvc-d7943182ab.json:/app/bmo-etf-firebase-adminsdk-fbsvc-d7943182ab.json
     restart: unless-stopped
+
 
