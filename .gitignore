@@ -52,3 +52,5 @@ Thumbs.db
 # Firebase credentials
 bmo-etf-firebase*.json
 
+# Alembic
+alembic.ini
