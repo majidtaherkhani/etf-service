@@ -8,6 +8,7 @@ class TimeSeriesPoint(BaseModel):
 class LatestPriceResponse(BaseModel):
     ticker: str
     price: float
+    weight: float
 
 class EtfAnalysisResponse(BaseModel):
     etf_name: str

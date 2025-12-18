@@ -103,7 +103,8 @@ class EtfService:
         latest_prices_resp = [
             schemas.LatestPriceResponse(
                 ticker=t, 
-                price=round(last_prices[t] * weights[t], 2)
+                price=round(last_prices[t] * weights[t], 2),
+                weight=weights[t]
             ) 
             for t in available_tickers
         ]
