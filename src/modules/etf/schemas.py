@@ -3,12 +3,13 @@ from typing import List
 
 class TimeSeriesPoint(BaseModel):
     date: str
-    price: float
+    nav: float # Net Asset Value
 
 class LatestPriceResponse(BaseModel):
     ticker: str
     price: float
     weight: float
+    value: float
 
 class EtfAnalysisResponse(BaseModel):
     etf_name: str

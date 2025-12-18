@@ -103,14 +103,15 @@ class EtfService:
         latest_prices_resp = [
             schemas.LatestPriceResponse(
                 ticker=t, 
-                price=round(last_prices[t] * weights[t], 2),
-                weight=weights[t]
+                price=round(last_prices[t], 2),
+                weight=weights[t],
+                value=round(last_prices[t] * weights[t], 2)
             ) 
             for t in available_tickers
         ]
         
         etf_time_series_resp = [
-            schemas.TimeSeriesPoint(date=str(d), price=round(p, 2))
+            schemas.TimeSeriesPoint(date=str(d), nav=round(p, 2))
             for d, p in etf_series.items()
         ]
 
