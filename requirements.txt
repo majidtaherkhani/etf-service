@@ -7,4 +7,5 @@ firebase-admin==6.4.0
 alembic==1.13.0
 pandas==2.1.4
 python-multipart==0.0.6
+slowapi==0.1.9
 
