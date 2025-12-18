@@ -1,7 +1,16 @@
 from slowapi import Limiter
-from slowapi.util import get_remote_address
+from starlette.requests import Request
 
-# key_func=get_remote_address -> Identifies user by their IP address
-# default_limits=["5/minute"] -> Applies to ALL routes (optional, usually better to define per route)
+def get_real_user_ip(request: Request):
+    """
+    Retrieves the real IP address of the user.
+    Essential for deployments (Vercel, Docker, AWS) where the direct
+    connection comes from a load balancer/proxy.
+    """
+    forwarded = request.headers.get("X-Forwarded-For")
+    if forwarded:
+        return forwarded.split(",")[0]
+    
+    return request.client.host or "127.0.0.1"
 
-limiter = Limiter(key_func=get_remote_address)
+limiter = Limiter(key_func=get_real_user_ip, default_limits=["30/hour"])
