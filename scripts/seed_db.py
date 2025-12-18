@@ -32,7 +32,7 @@ def read_csv_and_transform(csv_path: str) -> list[SecurityPrice]:
 
 
 if __name__ == "__main__":
-    csv_file = Path(__file__).parent.parent / "bankofmontreal-prices.csv"
+    csv_file = Path(__file__).parent.parent / "sample-data" / "bankofmontreal-prices.csv"
     if not csv_file.exists():
         print(f"Error: CSV file not found at {csv_file}")
         sys.exit(1)
