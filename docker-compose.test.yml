@@ -1,0 +1,19 @@
+# Docker Compose configuration for running tests
+# Usage: docker-compose -f docker-compose.test.yml up --abort-on-container-exit
+# Note: Unit tests mock all dependencies, so no database is needed
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -m pytest src/modules/etf/tests -v --tb=short
+    volumes:
+      - ./src:/app/src
+      - ./configs:/app/configs
+      - ./pytest.ini:/app/pytest.ini
+    environment:
+      - DATABASE_POSTGRESQL_URL=${DATABASE_POSTGRESQL_URL:-}
+      - FIREBASE_CREDENTIALS_PATH=/app/bmo-etf-firebase-adminsdk-fbsvc-d7943182ab.json
+    env_file:
+      - .env
