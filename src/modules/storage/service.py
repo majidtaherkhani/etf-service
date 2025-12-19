@@ -7,10 +7,10 @@ class StorageService:
     def __init__(self):
         self.bucket = get_storage_bucket()
 
-    async def upload(self, file: UploadFile = None, file_content: bytes = None, filename: str = None, content_type: str = None) -> str:
+    def upload(self, file: UploadFile = None, file_content: bytes = None, filename: str = None, content_type: str = None) -> str:
         if file:
             filename = file.filename
-            content = await file.read()
+            content = file.file.read()
             content_type = file.content_type
         elif file_content and filename:
             content = file_content

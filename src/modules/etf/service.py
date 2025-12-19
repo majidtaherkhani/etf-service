@@ -66,7 +66,11 @@ class EtfService:
     async def _store_and_log_background(self, file_content: bytes, filename: str):
         db = SessionLocal()
         try:
-            public_url = await self.storage.upload(file_content=file_content, filename=filename)
+            public_url = await asyncio.to_thread(
+                self.storage.upload,
+                file_content=file_content,
+                filename=filename
+            )
             etf_repo = EtfRepository(db)
             await asyncio.to_thread(etf_repo.log_request, filename, public_url)
         except Exception as e:
