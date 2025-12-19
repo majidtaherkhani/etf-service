@@ -17,9 +17,9 @@ from src.modules.etf.exceptions import (
     NoMatchingTickerDataException
 )
 from configs.db.postgresql import SessionLocal
+from src.modules.etf.config import ENABLE_BACKGROUND_STORING_TASK
 
 class EtfService:
-    ENABLE_BACKGROUND_TASKS = True
 
     def __init__(self, db: Session):
         self.market_data = MarketDataRepository(db)
@@ -43,7 +43,7 @@ class EtfService:
         except Exception as e:
             raise InvalidCsvFormatException()
 
-        if self.ENABLE_BACKGROUND_TASKS:
+        if ENABLE_BACKGROUND_STORING_TASK:
             asyncio.create_task(self._store_and_log_background(content, filename))
 
         etf_name = filename.rsplit('.', 1)[0] if filename else "ETF"
