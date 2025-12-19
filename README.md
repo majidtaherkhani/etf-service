@@ -82,7 +82,7 @@ To run this project locally, you must have **Docker** installed and a PostgreSQL
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/yourusername/etf-service.git](https://github.com/yourusername/etf-service.git)
+    git clone https://github.com/majidtaherkhani/etf-service.git
     cd etf-service
     ```
 
@@ -109,5 +109,6 @@ To run this project locally, you must have **Docker** installed and a PostgreSQL
 * **App:** Render
 * **Database:** AWS
 * **Storage:** GCP (Firebase)
+
 
 
