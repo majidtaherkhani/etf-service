@@ -68,6 +68,14 @@ Service health check.
 * **Currency:** All prices are in USD (no currency conversion applied).
 * **CSV Format:** Strictly follows `name, weight` headers.
 
+## 💡 Project Philosophy & Design Decisions
+
+**1. Polyglot Persistence (Technical Showcase)**
+This project was designed as a demonstration of **backend engineering skills**. I intentionally chose a multi-cloud stack (AWS, GCP, Render) and distinct storage layers (PostgreSQL, TimescaleDB, Firebase).
+
+**2. Raw Data as "Source of Truth"**
+The system implements a **Raw Data First** approach. By archiving the original CSV files in Object Storage, we maintain an immutable "Source of Truth." This ensures data integrity and allows for potential re-ingestion or auditing in the future, decoupling the storage layer from the application logic.
+
 ## ⚙️ Local Setup & Installation
 
 To run this project locally, you must have **Docker** installed and a PostgreSQL instance with the **TimescaleDB** extension.
@@ -99,7 +107,7 @@ To run this project locally, you must have **Docker** installed and a PostgreSQL
 ## ☁️ Deployment
 
 * **App:** Render
-* **Database:** AWS RDS
+* **Database:** AWS
 * **Storage:** GCP (Firebase)
 
-The multi-cloud setup was chosen to optimize for a **cost-efficient (free-tier) deployment** while demonstrating the ability to integrate diverse infrastructure providers.
+
